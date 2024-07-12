@@ -7,13 +7,10 @@ const sequelize = new Sequelize(
   process.env.DB_PASS,
   {
     host: process.env.DB_HOST,
-    dialect: "postgres",
+    dialect: "mysql",
     port: process.env.DB_PORT,
+    pool: { maxConnections: 5, maxIdleTime: 30 },
   }
 );
-
-// sequelize.sync({ force: true, alter: true }).then(() => {
-//   console.log("Database & tables created!");
-// });
 
 module.exports = sequelize;
